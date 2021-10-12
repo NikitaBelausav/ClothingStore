@@ -1,0 +1,35 @@
+version: '3'
+ 
+services:
+  db: # Database
+    image: mysql:8.0
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: cs336project
+      MYSQL_DATABASE: buyme
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    networks:
+      - buyme-net
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./src/main/sql:/docker-entrypoint-initdb.d
+  phpmyadmin: # MySQL Admin Panel
+    image: phpmyadmin:latest
+    container_name: pma
+    depends_on: 
+      - db
+    networks:
+      - buyme-net
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+    restart: always
+    ports:
+      - 8088:80
+networks:
+  buyme-net:
+volumes:
+  db_data:

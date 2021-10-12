@@ -1,0 +1,28 @@
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>2.0</jsp-version>
+    <short-name>Utility TLD</short-name>
+
+    <tag>
+        <name>get-navlinks</name>
+        <tag-class>edu.rutgers.tag.GetNavlinksTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>itemClass</name>
+            <type>java.lang.String</type>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>generate-report</name>
+        <tag-class>edu.rutgers.tag.GenerateReportTag</tag-class>
+        <attribute>
+            <name>flags</name>
+            <type>java.lang.Integer</type>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>

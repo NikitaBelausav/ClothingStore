@@ -1,0 +1,29 @@
+plugins {
+    id "java"
+    id "war"
+    id 'com.bmuschko.tomcat' version '2.5'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    def tomcatVersion = '7.0.108'
+
+    implementation 'mysql:mysql-connector-java:8.0.23'
+    
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    providedCompile 'javax.servlet.jsp:jsp-api:2.2'
+
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}",
+           "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+}
+
+tomcat {
+    httpPort = 8090
+    httpsPort = 8091
+}
+
+
